@@ -63,13 +63,10 @@ def Kustutamine(sportlased:list,tulemused:list):
     
     Kustutamine = [i for i, score in enumerate(tulemused) if score < 15]
     if Kustutamine:
-        print("Järgmised sportlased on diskvalifitseeritud:")
         for i in reversed(Kustutamine):
             athlete_name = sportlased.pop(i)
             score = tulemused.pop(i)
             print(f"- {athlete_name}: {score}")
-    else:
-        print("Ühtegi sportlast ei diskvalifitseeritud.")
 
 def Top3(sportlased:list,tulemused:list):
     """Top3
