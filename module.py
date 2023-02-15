@@ -9,7 +9,7 @@ def Lisa_Andmed(sportlased:list,tulemused:list):
     n = int(input("Enter the number of athletes: "))
     for j in range(n):
         nimi=input("Sisesta nimi: ")
-        tulemus=(randint(1, 100) for _ in range(3))
+        tulemus=(randint(1, 100) for _ in range(3)) #int
         result=max(tulemus)
         sportlased.append(nimi)
         tulemused.append(result)
@@ -34,7 +34,7 @@ def Soorteerimine(i:list,p:list):
                 i[j]=i[k]
                 i[k]=abi
 
-    return i,p
+    return sportlased, tulemused
 
 
 def nimiResult(sportlased:list,tulemused:list):
@@ -44,12 +44,12 @@ def nimiResult(sportlased:list,tulemused:list):
     :rtype: list, list
     """
     nimi=input("Print nimi ")
-    nimiList = []
-    for j in range(len(sportlased)):
-        if sportlased[j] == nimi:
-            nimiList.append(tulemused[j])
+    nimiList = [] #создаеи новый список
+    for j in range(len(sportlased)): #считает кол-во объектов в списке
+        if sportlased[j] == nimi: #сверяем
+            nimiList.append(tulemused[j]) #добавляем значение, которое нашли в новый спсиок
     
-    print (nimi,"result on",nimiList) 
+    print (nimi,"result on",nimiList) #выводим
 
 
 
@@ -77,11 +77,12 @@ def Top3(sportlased:list,tulemused:list):
     :param list p: tulemused 
     :rtype: list, list
     """
-    results = [(sportlased[i], tulemused[i]) for i in range(len(sportlased))]
-    sorted_results = sorted(results, key=lambda x: x[1], reverse=True)
+    results = [(sportlased[i], tulemused[i])
+               for i in range(len(sportlased))] 
+    sorted_results = sorted(results, key=lambda x: x[1], reverse=True) #lamda-Функция, reverceTrue-сортировка по убыванию
     top_results = sorted_results[:3]
     print("Top 3 results:")
-    for i, (athlete, score) in enumerate(top_results):
+    for i, (athlete, score) in enumerate(top_results): #enumerate-нумерация
         print(f"{i+1}. {athlete}: {score}")
     return top_results
 
